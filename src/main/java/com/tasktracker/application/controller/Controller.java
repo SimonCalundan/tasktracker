@@ -18,12 +18,12 @@ public class Controller {
         StorageHandler.updateTodoDescription(id, newDescription);
     }
 
-    public static void updateTodoItemStatus(int id, String status) {
-        if (status.equalsIgnoreCase(Status.TODO.getValue())){
+    public static void updateTodoItemStatus(int id, Status status) {
+        if (status.equals(Status.TODO)){
             StorageHandler.updateTodoStatus(id, Status.TODO);
-        } else if (status.equalsIgnoreCase(Status.IN_PROGRESS.getValue())){
+        } else if (status.equals(Status.IN_PROGRESS)){
             StorageHandler.updateTodoStatus(id, Status.IN_PROGRESS);
-        } else if (status.equalsIgnoreCase(Status.DONE.getValue())){
+        } else if (status.equals(Status.DONE)){
             StorageHandler.updateTodoStatus(id, Status.DONE);
         }
     }

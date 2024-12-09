@@ -16,7 +16,7 @@ public class TodoItem {
 
     public TodoItem() {
         // Initialize with default values
-        this.id = ++lastId;
+        this.id = lastId++;
         this.description = "";
         this.status = Status.TODO;
         this.createdAt = LocalDateTime.now().format(formatter);
@@ -65,6 +65,6 @@ public class TodoItem {
 
     @Override
     public String toString() {
-        return String.format("%-20d  %-10s %-40s", id, status.getValue(), description);
+        return String.format("%-5d %-10s %-40s", id, status.getValue(), description);
     }
 }

@@ -36,7 +36,7 @@ public class ControllerTest {
     @Test
     public void testUpdateTodoStatus(){
         TodoItem todo = Controller.createTodo("Hent Cykel");
-        Controller.updateTodoItemStatus(todo.getId(), "done");
+        Controller.updateTodoItemStatus(todo.getId(), Status.DONE);
 
         TodoItem updatedTodo = Controller.findTodo(todo.getId());
         assertNotNull(updatedTodo);
