@@ -1,10 +1,19 @@
 package com.tasktracker.application.controller;
 
 import com.tasktracker.application.model.TodoItem;
+import com.tasktracker.storage.StorageHandler;
 import net.jqwik.api.*;
+import org.junit.jupiter.api.BeforeEach;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ControllerJqwikTest {
+
+    @BeforeEach
+    void clearData(){
+        StorageHandler.clearTodos();
+    }
+
     @Property
     void testTodoDescription(@ForAll String description){
         TodoItem todo = Controller.createTodo(description);

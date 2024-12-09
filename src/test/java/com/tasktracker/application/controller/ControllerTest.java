@@ -1,5 +1,6 @@
 package com.tasktracker.application.controller;
 
+import com.tasktracker.application.model.Status;
 import com.tasktracker.application.model.TodoItem;
 import com.tasktracker.storage.StorageHandler;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,6 +31,16 @@ public class ControllerTest {
         TodoItem updatedTodo = Controller.findTodo(todo.getId());
         assertNotNull(updatedTodo);
         assertEquals("Hent cykel NU", updatedTodo.getDescription());
+    }
+
+    @Test
+    public void testUpdateTodoStatus(){
+        TodoItem todo = Controller.createTodo("Hent Cykel");
+        Controller.updateTodoItemStatus(todo.getId(), "done");
+
+        TodoItem updatedTodo = Controller.findTodo(todo.getId());
+        assertNotNull(updatedTodo);
+        assertEquals(Status.DONE, updatedTodo.getStatus());
     }
 
     @Test

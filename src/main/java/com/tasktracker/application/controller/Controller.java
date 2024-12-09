@@ -46,4 +46,10 @@ public class Controller {
         return StorageHandler.getTodos();
     }
 
+    public static List<TodoItem> getTodos(Status status){
+      return StorageHandler.getTodos().stream()
+              .filter(todo -> todo.getStatus().equals(status))
+              .toList();
+    }
+
 }
