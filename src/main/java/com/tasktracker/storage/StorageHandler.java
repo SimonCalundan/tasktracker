@@ -6,6 +6,7 @@ import com.tasktracker.application.model.Status;
 import com.tasktracker.application.model.TodoItem;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.github.cdimascio.dotenv.Dotenv;
 
 import java.io.*;
 import java.net.URISyntaxException;
@@ -14,8 +15,16 @@ import java.util.List;
 import java.util.Scanner;
 
 public class StorageHandler {
-    private static final String FILE_PATH = "/home/simon/IdeaProjects/task-tracker/src/main/java/com/tasktracker/storage/todos.json";
+    private static final String FILE_PATH;
+
+    // Be sure to add your own .env file containing the path to your .json file
+    static {
+        Dotenv dotenv = Dotenv.load();
+        FILE_PATH = dotenv.get("FILE_PATH");
+    }
+
     private static final ObjectMapper objectMapper = new ObjectMapper();
+
 
     public static void addTodo(TodoItem todo) {
         List<TodoItem> todos = getTodos();
